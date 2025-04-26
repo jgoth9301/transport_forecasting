@@ -14,7 +14,7 @@ data = pd.read_csv('data-apr14.csv')
 print(f'Number of trips: {data.shape[0]:,} \n\n' f'{data.head()}')
 
 # Use part of the dataset (first 5 samples) to illustrate visualization!
-dataSample = data[0:5]
+dataSample = data[0:10000]
 
 # Create map and add locations
 map = folium.Map(dataSample[['Lat', 'Lon']].mean().values.tolist())

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Taxi Demand Prediction</title>
+</head>
+<body>
+    <h2>Cluster Prediction Interface</h2>
+    <form method="POST">
+        <label for="day">Day (1–31):</label>
+        <input type="number" id="day" name="day" min="1" max="31" required>
+        <br><br>
+
+        <label for="hour">Hour (0–23):</label>
+        <input type="number" id="hour" name="hour" min="0" max="23" required>
+        <br><br>
+
+        <label for="day_type">Day Type:</label>
+        <select id="day_type" name="day_type" required>
+            <option>Weekday</option>
+            <option>Saturday</option>
+            <option>Sunday</option>
+            <option>Public Holiday</option>
+        </select>
+        <br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if result %}
+        <h3>Predicted Required Cars per Cluster:</h3>
+        <ul>
+            {% for cluster, value in result.items() %}
+                <li><strong>{{ cluster }}:</strong> {{ value }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
